@@ -43,13 +43,17 @@ $(function () {
             if(dest.data == "#img_right"){
             	i=1
 	    }
-            	results[i]=params_result;
-                $("#img_"+(i+1)+"_happiness").css('width',params_result[0]+'%');
-                $("#img_"+(i+1)+"_anger").css('width',params_result[1]+'%');
-                $("#img_"+(i+1)+"_fear").css('width',params_result[2]+'%');
-                $("#img_"+(i+1)+"_surprise").css('width',params_result[3]+'%');
-                $("#img_"+(i+1)+"_overall").html( params_result[0] + params_result[1] + params_result[2] + params_result[3]);
-                
+		if(params_result){
+	            	results[i]=params_result;
+        	        $("#img_"+(i+1)+"_happiness").css('width',params_result[0]+'%');
+        	        $("#img_"+(i+1)+"_anger").css('width',params_result[1]+'%');
+        	        $("#img_"+(i+1)+"_fear").css('width',params_result[2]+'%');
+        	        $("#img_"+(i+1)+"_surprise").css('width',params_result[3]+'%');
+        	        $("#img_"+(i+1)+"_overall").html( params_result[0] + params_result[1] + params_result[2] + params_result[3]);
+                }else{
+                	// no image detected
+			alert('No Face detected!');
+                }
             
 		})
 		.fail(function(data) {
@@ -65,6 +69,7 @@ $(function () {
     function parseJSON(imgData){
         
     	var dataLength = imgData.length;
+	if(dataLength){
     	var happiness = 0;
     	var anger = 0;
     	var fear = 0;
@@ -79,7 +84,10 @@ $(function () {
     	//the return data are happiness , anger , fear and surprise respectively
         //use it in filling the bars under the images
     	params_arr = [parseInt((happiness/dataLength)*100), parseInt((anger/dataLength)*100), parseInt((fear/dataLength)*100), parseInt((surprise/dataLength)*100)];
+	
     	return params_arr;
+	}
+	else return dataLength;
 
     }
 $("#input_file_left").change("#img_left",readImage);
