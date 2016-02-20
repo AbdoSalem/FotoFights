@@ -12,64 +12,45 @@
 /* global $, window */
 
 $(function () {
-    'use strict';
+    
+    //read the image choosen and send the request to Microsoft
+    function readImage(dest) {
+    if ( this.files && this.files[0] ) {
+    	var that =this;
+        var FR = new FileReader();
+        FR.onload = function(e) {
+             $(dest.data).attr( "src", e.target.result );             
+	     $.ajax({
+			url: "https://api.projectoxford.ai/emotion/v1.0/recognize",
+			contentType: "application/octet-stream",
+			
+			beforeSend: function(xhrObj){
+			    // Request headers
 
-    // Initialize the jQuery File Upload widget:
-    $('#fileupload').fileupload({
-        // Uncomment the following to send cross-domain cookies:
-        //xhrFields: {withCredentials: true},
-        url: 'server/php/'
-    });
-
-    // Enable iframe cross-domain access via redirect option:
-    $('#fileupload').fileupload(
-        'option',
-        'redirect',
-        window.location.href.replace(
-            /\/[^\/]*$/,
-            '/cors/result.html?%s'
-        )
-    );
-
-    if (window.location.hostname === 'blueimp.github.io') {
-        // Demo settings:
-        $('#fileupload').fileupload('option', {
-            url: '//jquery-file-upload.appspot.com/',
-            // Enable image resizing, except for Android and Opera,
-            // which actually support image resizing, but fail to
-            // send Blob objects via XHR requests:
-            disableImageResize: /Android(?!.*Chrome)|Opera/
-                .test(window.navigator.userAgent),
-            maxFileSize: 999000,
-            acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
-        });
-        // Upload server status check for browsers with CORS support:
-        if ($.support.cors) {
-            $.ajax({
-                url: '//jquery-file-upload.appspot.com/',
-                type: 'HEAD'
-            }).fail(function () {
-                $('<div class="alert alert-danger"/>')
-                    .text('Upload server currently unavailable - ' +
-                            new Date())
-                    .appendTo('#fileupload');
-            });
-        }
-    } else {
-        // Load existing files:
-        $('#fileupload').addClass('fileupload-processing');
-        $.ajax({
-            // Uncomment the following to send cross-domain cookies:
-            //xhrFields: {withCredentials: true},
-            url: $('#fileupload').fileupload('option', 'url'),
-            dataType: 'json',
-            context: $('#fileupload')[0]
-        }).always(function () {
-            $(this).removeClass('fileupload-processing');
-        }).done(function (result) {
-            $(this).fileupload('option', 'done')
-                .call(this, $.Event('done'), {result: result});
-        });
+			    xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","281f479605604d969c9e4c01c9447e31");
+			},
+			type: "POST",
+			processData: false,
+			    // Request body
+			data: that.files[0]
+		})
+		.done(function(data) {
+			//the success Function
+//		 	 $('#base').text(JSON.stringify(data, null, '\t'));
+		})
+		.fail(function(data) {
+			//the Error Function
+//		   $('#base').text(JSON.stringify(data, null, '\t'));
+		});
+        };       
+        FR.readAsDataURL( this.files[0] );
     }
+}
+
+$("#input_file_left").change("#img_left",readImage);
+$("#input_file_right").change("#img_right",readImage );
+
+
+ 
 
 });
