@@ -1,0 +1,86 @@
+@charset "UTF-8";
+/*
+ * jQuery File Upload Plugin CSS Example
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2013, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+html, body {
+   height: 100%;
+ }
+body {
+  padding-top: 0px;
+  background-color: #e9c34e;
+  background-image : url("/img/pattrn.png");
+}
+
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -40px;
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.site-footer, .page-wrap:after {
+  height: 40px;
+}
+.site-footer {
+  background: #d3a244;
+
+}
+
+
+#subhead{
+  margin-top: -20px;
+  margin-bottom: 45px;
+  color: #42394a;
+}
+#imgs{
+  margin-bottom: 30px;
+
+}
+#left-box{
+  border: 15px solid #ed624a;
+  border-radius: 8px;
+  background-color: #3a303e;
+  height: 300px;
+  box-shadow: 6px 6px 0px rgba(165, 138, 54, 0.5);
+  background-image: url("/img/btn.png");
+  background-size: 270px;
+  background-repeat: no-repeat;
+}
+#right-box{
+  border: 15px solid #26aa57;
+  border-radius: 8px;
+  background-color: #3a303e;
+  height: 300px;
+  box-shadow: 6px 6px 0px rgba(165, 138, 54, 0.5);
+  background-image: url("/img/btn.png");
+  background-size: 270px;
+  background-repeat: no-repeat;
+}
+.vs{
+  margin-top: 100px;
+  margin-left: 45px;
+  font-size: 70px;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+#comparison-txt{
+  color: #42394a;
+  margin-bottom: 30px;
+
+}
+i {
+  color:#695122 ;
+}
+footer h4{
+  color: #3a303e;
+  font-size: 14px;
+  font-weight: 200;
+}
