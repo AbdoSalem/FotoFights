@@ -37,6 +37,24 @@ $(function () {
 		.done(function(data) {
 			//the success Function
 //		 	 $('#base').text(JSON.stringify(data, null, '\t'));
+            //after calling parseJSON(data) use these lines
+            //params_result = parseJSON(data)
+            if(dest.data == "#img_left"){
+                $("#img_1_happiness").css('width',params_result[0].concat('%'));
+                $("#img_1_anger").css('width',params_result[1].concat('%'));
+                $("#img_1_fear").css('width',params_result[2].concat('%'));
+                $("#img_1_surprise").css('width',params_result[3].concat('%'));
+                $("#img1_overall").innerHTML = params_result[0] + params_result[1] + params_result[2] + params_result[3];
+                
+            }else if(dest.data == "#img_right"){
+                $("#img_2_happiness").css('width',params_result[0].concat('%'));
+                $("#img_2_anger").css('width',params_result[1].concat('%'));
+                $("#img_2_fear").css('width',params_result[2].concat('%'));
+                $("#img_2_surprise").css('width',params_result[3].concat('%'));
+                $("#img2_overall").innerHTML = params_result[0] + params_result[1] + params_result[2] + params_result[3];
+
+                
+            }
 		})
 		.fail(function(data) {
 			//the Error Function
@@ -64,7 +82,7 @@ $(function () {
     	}
     	//the return data are happiness , anger , fear and surprise respectively
         //use it in filling the bars under the images
-    	params_arr = [(happiness/dataLength), (anger/dataLength), (fear/dataLength), (surprise/dataLength)];
+    	params_arr = [parseInt((happiness/dataLength)*100), parseInt((anger/dataLength)*100), parseInt((fear/dataLength)*100), parseInt((surprise/dataLength)*100)];
     	return params_arr;
 
     }
