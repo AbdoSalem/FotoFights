@@ -51,7 +51,7 @@ body {
   background-color: #3a303e;
   height: 300px;
   box-shadow: 6px 6px 0px rgba(165, 138, 54, 0.5);
-  background-image: url("/my_start_page/img/btn.png");
+  background-image: url("../img/btn.png");
   background-size: 270px;
   background-repeat: no-repeat;
 }
@@ -61,7 +61,7 @@ body {
   background-color: #3a303e;
   height: 300px;
   box-shadow: 6px 6px 0px rgba(165, 138, 54, 0.5);
-  background-image: url("/my_start_page/img/btn.png");
+  background-image: url("../img/btn.png");
   background-size: 270px;
   background-repeat: no-repeat;
 }
