@@ -51,7 +51,7 @@ body {
   background-color: #3a303e;
   height: 300px;
   box-shadow: 6px 6px 0px rgba(165, 138, 54, 0.5);
-  background-image: url("../img/btn.png");
+
   background-size: 270px;
   background-repeat: no-repeat;
 }
@@ -61,7 +61,7 @@ body {
   background-color: #3a303e;
   height: 300px;
   box-shadow: 6px 6px 0px rgba(165, 138, 54, 0.5);
-  background-image: url("../img/btn.png");
+
   background-size: 270px;
   background-repeat: no-repeat;
 }
@@ -91,7 +91,8 @@ position: absolute;
     margin: 0;
     opacity: 0;
     -ms-filter: 'alpha(opacity=0)';
-    font-size: 200px;
+    width: 292.5px;
+    height: 300px;
     direction: ltr;
     cursor: pointer;	
 }
