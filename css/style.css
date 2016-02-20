@@ -9,6 +9,11 @@
  * Licensed under the MIT license:
  * http://www.opensource.org/licenses/MIT
  */
+
+
+@import url(https://fonts.googleapis.com/css?family=Alegreya:400italic,400,700,900,700italic,900italic);
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:100,900italic,900,800);
+
 html, body {
    height: 100%;
  }
@@ -40,6 +45,8 @@ body {
   margin-top: -20px;
   margin-bottom: 45px;
   color: #42394a;
+  font-family: 'Alegreya', serif;
+  font-style: italic;
 }
 #imgs{
   margin-bottom: 30px;
@@ -51,9 +58,7 @@ body {
   background-color: #3a303e;
   height: 300px;
   box-shadow: 6px 6px 0px rgba(165, 138, 54, 0.5);
-  background-image: url("../img/btn.png");
   background-size: 270px;
-  background-repeat: no-repeat;
 }
 #right-box{
   border: 15px solid #26aa57;
@@ -61,26 +66,107 @@ body {
   background-color: #3a303e;
   height: 300px;
   box-shadow: 6px 6px 0px rgba(165, 138, 54, 0.5);
-  background-image: url("../img/btn.png");
   background-size: 270px;
-  background-repeat: no-repeat;
 }
-.vs{
+#vs{
+  font-family: 'Alegreya Sans', sans-serif;
+  font-weight: 900;
+  font-style: italic;
   margin-top: 100px;
-  margin-left: 45px;
+  margin-left: 50px;
   font-size: 70px;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+
 }
+#stats{
+margin-top: 40px;
+height: 450px;
+background-color: #3a303e;
+border: 15px solid #3a303e;
+border-radius: 15px;
+color: #fff;
+font-family: 'Alegreya Sans', sans-serif;
+font-weight: 900;
+font-size: 20px;
+}
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+    border: none;
+}
+.big-txt{
+  font-size:35px;
+}
+
+
+#results{
+margin-top: 15px;
+height: 100px;
+background-color: #26aa57;
+border: 15px solid #26aa57;
+border-radius: 15px;
+box-shadow: 6px 6px 0px rgba(165, 138, 54, 0.5);
+}
+#result-txt{
+  font-family: 'Alegreya Sans', sans-serif;
+  font-weight: 900;
+  color: #fff;
+  font-size: 50px;
+}
+#share-btn{
+font-family: 'Alegreya Sans', sans-serif;
+font-weight: 900;
+font-size: 35px;
+background-color: #02732c;
+color: white;
+box-shadow: 4px 4px 0px rgba(22, 98, 50, 1);
+}
+
+#share-btn:hover{
+font-family: 'Alegreya Sans', sans-serif;
+font-weight: 900;
+font-size: 35px;
+background-color: #02732c;
+color: white;
+margin-left: 4px;
+margin-top: 4px;
+box-shadow: 0px 0px 0px rgba(22, 98, 50, 1);
+}
+
+#share-btn i {
+  color: white;
+}
+
 #comparison-txt{
   color: #42394a;
   margin-bottom: 30px;
+  font-family: 'Alegreya', serif;
+  font-style: italic;
 
 }
 i {
   color:#695122 ;
 }
 footer h4{
+  font-family: 'Alegreya Sans', sans-serif;
+  font-weight: 100;
   color: #3a303e;
-  font-size: 14px;
-  font-weight: 200;
+  font-size: 15px;
+
+}
+.input_file{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    width: 290px;
+    height: 290px;
+    direction: ltr;
+    cursor: pointer;
+}
+.initial-img {
+  margin-top: -5px;
+  margin-left: -30px;
+  width: 290px;
+  height: 280px;
 }
