@@ -12,7 +12,7 @@
 /* global $, window */
 
 $(function () {
-    
+    var results = new Array();
     //read the image choosen and send the request to Microsoft
     function readImage(dest) {
     if ( this.files && this.files[0] ) {
@@ -38,23 +38,19 @@ $(function () {
 			//the success Function
 //		 	 $('#base').text(JSON.stringify(data, null, '\t'));
             //after calling parseJSON(data) use these lines
-            //params_result = parseJSON(data)
-            if(dest.data == "#img_left"){
-                $("#img_1_happiness").css('width',params_result[0].concat('%'));
-                $("#img_1_anger").css('width',params_result[1].concat('%'));
-                $("#img_1_fear").css('width',params_result[2].concat('%'));
-                $("#img_1_surprise").css('width',params_result[3].concat('%'));
-                $("#img1_overall").innerHTML = params_result[0] + params_result[1] + params_result[2] + params_result[3];
+            params_result = parseJSON(data)
+	    i=0;
+            if(dest.data == "#img_right"){
+            	i=1
+	    }
+            	results[i]=params_result;
+                $("#img_"+(i+1)+"_happiness").css('width',params_result[0]+'%');
+                $("#img_"+(i+1)+"_anger").css('width',params_result[1]+'%');
+                $("#img_"+(i+1)+"_fear").css('width',params_result[2]+'%');
+                $("#img_"+(i+1)+"_surprise").css('width',params_result[3]+'%');
+                $("#img_"+(i+1)+"_overall").html( params_result[0] + params_result[1] + params_result[2] + params_result[3]);
                 
-            }else if(dest.data == "#img_right"){
-                $("#img_2_happiness").css('width',params_result[0].concat('%'));
-                $("#img_2_anger").css('width',params_result[1].concat('%'));
-                $("#img_2_fear").css('width',params_result[2].concat('%'));
-                $("#img_2_surprise").css('width',params_result[3].concat('%'));
-                $("#img2_overall").innerHTML = params_result[0] + params_result[1] + params_result[2] + params_result[3];
-
-                
-            }
+            
 		})
 		.fail(function(data) {
 			//the Error Function
