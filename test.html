@@ -21,6 +21,8 @@
     <title>foto fight</title>
     <meta name="description" content="File Upload widget with multiple file selection, drag&amp;drop support, progress bars, validation and preview images, audio and video for jQuery. Supports cross-domain, chunked and resumable file uploads and client-side image resizing. Works with any server-side platform (PHP, Python, Ruby on Rails, Java, Node.js, Go etc.) that supports standard HTML form file uploads.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- favicon -->
+    <link rel="icon" href="../img/foto.png">
     <!-- Bootstrap styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
     <!-- fontawsome styles -->
@@ -35,7 +37,6 @@
     <noscript><link rel="stylesheet" href="css/jquery.fileupload-ui-noscript.css"></noscript>
     <!-- Generic page styles -->
     <link rel="stylesheet" href="css/style.css">
-    <!-- Fonts -->
 
   </head>
   <body>
@@ -52,7 +53,7 @@
 
       <div class="row" id="imgs">
         <a href="#">
-          <div id="left-box" class="col-xs-10 col-xs-offset-1 col-sm-3 col-sm-offset-2 col-md-3 col-md-offset-2">
+          <div id="left-box" class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-3 col-md-offset-2">
             <input type="file" id="input_file_left" class="input_file" name="files[]" >
             <img id="img_left" class="initial-img" src="img/btn.png">
           </div>
@@ -63,25 +64,24 @@
         </div>
 
         <a href="#">
-          <div id="right-box" class="col-xs-10 col-xs-offset-1 col-sm-3 col-sm-offset-2 col-md-3 col-md-offset-1">
+          <div id="right-box" class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-3 col-md-offset-1">
             <input type="file" id="input_file_right" class="input_file " name="files[]" >
         		<img id="img_right" class="initial-img" src="img/btn.png"></div>
         </a>
 
       </div>
 
-      <div class="text-center" id="cancel-movement" >
-        <button type="submit" value="Submit" class="btn btn-lg" id="submit-btn-blue" href="#"> SUBMIT <i class="fa fa-check"> </i></button>
+
+      <div id="no-movement">
+        <button type="submit" value="Submit" class="btn btn-lg col-xs-12 col-sm-12 col-md-8 col-md-offset-2 submit-btn-blue" id="submit-btn-blue" href="#"> SUBMIT <i class="fa fa-check"> </i></button>
       </div>
 
-
-
-      <div class="col-md-8 col-md-offset-2 results-green" id="results" style="display:none">
-        <div class="col-md-7 col-md-offset-1">
+      <div class="col-sm-12 col-md-8 col-md-offset-2 results-green" id="results">
+        <div class="col-xs-6 col-md-7 col-md-offset-1">
           <p id="result-txt">GREEN WINS!</p>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-xs-4 col-md-4">
           <a type="button" name="button" class="btn btn-lg share-btn-green" id="share-btn" href="#"
           onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),'facebook-share-dialog','width=626,height=436');return false;"?> SHARE <i class="fa fa-share"> </i></a>
         </div>
@@ -98,7 +98,7 @@
             </tr>
             <tr>
               <td>
-                <div id="happiness-1">20</div>
+                <div id="happiness-red">20</div>
                 <div class="progress">
                   <div class="progress-bar progress-bar-danger" id="img_1_happiness" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:20%">
                     <span id="span_1_happiness" class="sr-only">20% Complete</span>
@@ -107,7 +107,7 @@
               </td>
               <td class="mid-col-table">HAPINESS</td>
               <td>
-                <div id="happiness-2">50</div>
+                <div id="happiness-green">50</div>
                 <div class="progress">
                   <div class="progress-bar progress-bar-success" id="img_2_happiness" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:50%">
                     <span id="span_2_happiness" class="sr-only">50% Complete</span>
@@ -117,7 +117,7 @@
             </tr>
             <tr>
               <td>
-                <div id="anger-1">45</div>
+                <div id="anger-red">45</div>
                 <div class="progress">
                   <div class="progress-bar progress-bar-danger" id="img_1_anger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:45%">
                     <span id="span_1_anger" class="sr-only">45% Complete</span>
@@ -126,7 +126,7 @@
               </td>
               <td class="mid-col-table">ANGER</td>
               <td>
-                <div id="anger-2">11</div>
+                <div id="anger-green">11</div>
                 <div class="progress">
                   <div class="progress-bar progress-bar-success" id="img_2_anger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:11%">
                     <span id="span_2_anger" class="sr-only">11% Complete</span>
@@ -136,7 +136,7 @@
             </tr>
             <tr>
               <td>
-                <div id="fear-1">40</div>
+                <div id="fear-red">40</div>
                 <div class="progress">
                   <div class="progress-bar progress-bar-danger" id="img_1_fear" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:40%">
                     <span id="span_1_fear" class="sr-only">40% Complete</span>
@@ -145,7 +145,7 @@
               </td>
               <td class="mid-col-table">FEAR</td>
               <td>
-                <div id="fear-2">12</div>
+                <div id="fear-green">12</div>
                 <div class="progress">
                   <div class="progress-bar progress-bar-success" id="img_2_fear" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:12%">
                     <span id="span_2_fear" class="sr-only">12% Complete</span>
@@ -155,7 +155,7 @@
             </tr>
             <tr>
               <td>
-                <div id="surprise-1">45</div>
+                <div id="surprise-red">45</div>
                 <div class="progress">
                   <div class="progress-bar progress-bar-danger" id="img_1_surprise" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:30%">
                     <span id="span_1_surprise" class="sr-only">45% Complete</span>
@@ -164,7 +164,7 @@
               </td>
               <td class="mid-col-table">SURPRISE</td>
               <td>
-                <div id="surprise-2">50</div>
+                <div id="surprise-green">50</div>
                 <div class="progress">
                   <div class="progress-bar progress-bar-success"  id="img_2_surprise" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:50%">
                     <span id="span_2_surprise" class="sr-only">50% Complete</span>
@@ -186,18 +186,18 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-md-3 col-md-offset-1">
+          <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1">
             <h4>copyright © 2016</h4>
           </div>
 
-          <div class="col-md-2 col-md-offset-1">
+          <div class="col-xs-2 col-xs-offset-1 col-sm-2 col-sm-offset-1 col-md-2 col-md-offset-1">
             <div class="row">
               <h4 class="text-center">  <a href="#"><i class="fa fa-twitter-square fa-lg"></i></a> <a href="#"><i class="fa fa-facebook-square fa-lg"></i></a> </h4>
 
             </div>
           </div>
 
-          <div class="col-md-3 col-md-offset-2">
+          <div class="col-xs-3 col-xs-offset-2 col-sm-3 col-sm-offset-2 col-md-3 col-md-offset-2">
             <h4>contact@fotofights.com</h4>
           </div>
         </div>

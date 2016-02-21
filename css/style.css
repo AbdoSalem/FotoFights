@@ -12,7 +12,7 @@
 
 
 @import url(https://fonts.googleapis.com/css?family=Alegreya:400italic,400,700,900,700italic,900italic);
-@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:100,900italic,900,800);
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:400,100,900,900italic,800);
 
 html, body {
    height: 100%;
@@ -76,34 +76,53 @@ body {
   margin-left: 50px;
   font-size: 70px;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-
 }
-#cancel-movement{
+#no-movement{
   height: 100px;
 }
-#submit-btn-blue{
+
+.submit-btn-blue{
 font-family: 'Alegreya Sans', sans-serif;
 font-weight: 900;
 font-size: 35px;
-background-color: #2680aa;
+background-color: #ed9e4a;
 color: white;
-box-shadow: 4px 4px 0px rgba(15, 56, 75, .7);
-
+box-shadow: 4px 4px 0px rgba(165, 138, 54, 0.5);
 }
 
-#submit-btn-blue:hover{
+.submit-btn-blue:hover{
 font-family: 'Alegreya Sans', sans-serif;
 font-weight: 900;
 font-size: 35px;
-background-color: #2680aa;
+background-color: #ed9e4a;
 color: white;
-margin-left: 4px;
 margin-top: 4px;
-box-shadow: 0px 0px 0px rgba(15, 56, 75, 1);
-
+box-shadow: 0px 0px 0px rgba(165, 138, 54, 0.5);
 }
-#submit-btn-blue i {
+.submit-btn-blue i {
+  color: #764f25;
+}
+
+.cancel-btn{
+  font-family: 'Alegreya Sans', sans-serif;
+  font-weight: 900;
+  font-size: 35px;
+  background-color: #babba9;
   color: white;
+  box-shadow: 4px 4px 0px rgba(165, 138, 54, 0.5);
+}
+
+.cancel-btn:hover{
+font-family: 'Alegreya Sans', sans-serif;
+font-weight: 900;
+font-size: 35px;
+background-color: #babba9;
+color: white;
+margin-top: 4px;
+box-shadow: 0px 0px 0px rgba(165, 138, 54, 0.5);
+}
+.cancel-btn i {
+  color: #5d5d54;
 }
 
 #stats{
@@ -138,6 +157,15 @@ border-radius: 15px;
 box-shadow: 6px 6px 0px rgba(165, 138, 54, 0.5);
 }
 
+.results-draw{
+margin-top: 15px;
+height: 100px;
+background-color: #ed9e4a;
+border: 15px solid #ed9e4a;
+border-radius: 15px;
+box-shadow: 6px 6px 0px rgba(165, 138, 54, 0.5);
+}
+
 #result-txt{
   font-family: 'Alegreya Sans', sans-serif;
   font-weight: 900;
@@ -164,8 +192,8 @@ margin-top: 4px;
 box-shadow: 0px 0px 0px rgba(22, 98, 50, 1);
 }
 
-#share-btn-green i {
-  color: white;
+.share-btn-green i {
+  color: #013916;
 }
 
 
@@ -190,7 +218,31 @@ box-shadow: 0px 0px 0px rgba(22, 98, 50, 1);
 }
 
 .share-btn-red i {
-  color: white;
+  color: #531209;
+}
+
+.share-btn-draw{
+font-family: 'Alegreya Sans', sans-serif;
+font-weight: 900;
+font-size: 35px;
+background-color: #b67532;
+color: white;
+box-shadow: 4px 4px 0px rgba(91, 58, 25, .6);
+}
+
+.share-btn-draw:hover{
+font-family: 'Alegreya Sans', sans-serif;
+font-weight: 900;
+font-size: 35px;
+background-color: #b67532;
+color: white;
+margin-left: 4px;
+margin-top: 4px;
+box-shadow: 0px 0px 0px rgba(91, 58, 25, .6);
+}
+
+.share-btn-draw i {
+  color: #5b3a19;
 }
 
 #comparison-txt{
@@ -205,7 +257,7 @@ i {
 }
 footer h4{
   font-family: 'Alegreya Sans', sans-serif;
-  font-weight: 100;
+  font-weight: 400;
   color: #3a303e;
   font-size: 15px;
 
@@ -235,4 +287,32 @@ footer h4{
 }
 .mid-col-table{
  font-size: 25px;
+}
+
+@media (max-width: 1200px) {
+  .initial-img {
+    margin-left: -15px;
+    width: 200px;
+    height: 200px;
+  }
+
+@media (max-width: 780px) {
+  .initial-img {
+    margin-left: -15px;
+    width: 250px;
+    height: 250px;
+  }
+
+}
+@media (max-width: 568px) {
+  #result-txt{
+    font-size: 30px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  #vs{
+    font-size: 55px;
+  }
 }
