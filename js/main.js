@@ -26,9 +26,9 @@ $(function() {
                 $(dest.data).attr("src", e.target.result);
             };
             FR.readAsDataURL(this.files[0]);
-        }else{
-        	$("#results").hide();
-		$("#stats").hide();
+        } else {
+            $("#results").hide();
+            $("#stats").hide();
         }
     }
 
@@ -81,6 +81,7 @@ $(function() {
                         params_result = parseJSON(data)
 
                         if (params_result) {
+                            //set the values of the service reply to UI
                             results[i] = params_result;
                             $("#img_" + (i + 1) + "_happiness").css('width', params_result[0] + '%');
                             $("#span_" + (i + 1) + "_happiness").html(params_result[0] + '% Happy');
@@ -96,20 +97,33 @@ $(function() {
                             $("#surprise-" + (i + 1)).html(params_result[3]);
                             $("#img_" + (i + 1) + "_overall").html(params_result[0] + params_result[1] + params_result[2] + params_result[3]);
                             if (results[0] && results[1]) {
+                                //here the two responses have come so show result
                                 sum0 = 0;
                                 sum1 = 0;
+				//calculate total for red
                                 $.each(results[0], function() {
                                     sum0 += parseFloat(this) || 0;
                                 });
+				//calculate total for green
                                 $.each(results[1], function() {
                                     sum1 += parseFloat(this) || 0;
                                 });
+
+				//change submit button to clear
+                                $("#submit-btn-blue").removeClass("submit-btn-blue");
+                                $("#submit-btn-blue").addClass("cancel-btn");
+                                $("#submit-btn-blue").html('CLEAR <i class="fa fa-times"> ');
+
+				//show results & status
                                 $("#results").show();
-				$("#stats").show();
-				$('html, body').animate({
-			    	    scrollTop: $("#stats").offset().top
-			        }, 500);
-				$(window).scrollTop();
+                                $("#stats").show();
+
+				//scroll to it gracefully
+                                $('html, body').animate({
+                                    scrollTop: $("#stats").offset().top / 2
+                                }, 500);
+                                $(window).scrollTop();
+
                                 if (sum0 > sum1) {
                                     //red wins
                                     $("#result-txt").html("RED WINS!");
@@ -163,9 +177,9 @@ $(function() {
                         } else {
                             warning = "";
                             if (i)
-                                warning = "No Face detected in the Green Image!";
+                                warning = "Sorry, No Face detected in the Green Image :(";
                             else
-                                warning = "No Face detected in the Red Image!";
+                                warning = "Sorry, No Face detected in the Red Image :(";
                             // no image detected
                             alert(warning);
                         }
@@ -176,19 +190,26 @@ $(function() {
                         //		   $('#base').text(JSON.stringify(data, null, '\t'));
                     });
             });
-        }else{
-        	alert("Please Upload Both Images!");
+        } else {
+            alert("Please Upload Both Images!");
         }
     }
     $("#input_file_left").change("#img_left", readImage);
     $("#input_file_right").change("#img_right", readImage);
-    $("#submit-btn-blue").click(function(){
-    	if($("#submit-btn-blue:contains('SUBMIT')").length>0){
-		submit();
-    	}else{
-    		alert("clear");
-    	}
-	
+    $("#submit-btn-blue").click(function() {
+        if ($("#submit-btn-blue:contains('SUBMIT')").length > 0) {
+            submit();
+        } else if($("#submit-btn-blue:contains('CLEAR')").length > 0){
+            $("#submit-btn-blue").removeClass("cancel-btn");
+            $("#submit-btn-blue").addClass("submit-btn-blue");
+            images = new Array();
+            $("#img_left").attr("src", "img/btn.png");
+            $("#img_right").attr("src", "img/btn.png");
+            $("#submit-btn-blue").html(' SUBMIT <i class="fa fa-check">');
+            $("#results").hide();
+            $("#stats").hide();
+        }
+
     });
 
 
