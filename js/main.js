@@ -106,7 +106,10 @@ $(function() {
                                 });
                                 $("#results").show();
 				$("#stats").show();
-				$(window).scrollTop($("#share-btn").offset().top/2);
+				$('html, body').animate({
+			    	    scrollTop: $("#stats").offset().top
+			        }, 500);
+				$(window).scrollTop();
                                 if (sum0 > sum1) {
                                     //red wins
                                     $("#result-txt").html("RED WINS!");
