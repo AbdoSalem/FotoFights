@@ -12,6 +12,7 @@
 $(function() {
     var images = new Array();
     var results = new Array();
+    var allsent=0;
     //read the image choosen and send the request to Microsoft
     function readImage(dest) {
         if (this.files && this.files[0]) {
@@ -36,7 +37,7 @@ $(function() {
     function parseJSON(imgData) {
 
         var dataLength = imgData.length;
-        if (dataLength) {
+        if (dataLength && imgData[i] && imgData[i]["scores"]) {
             var happiness = 0;
             var anger = 0;
             var fear = 0;
@@ -56,12 +57,21 @@ $(function() {
         } else return dataLength;
 
     }
+function loading(e){
+	if(e){
+            $("#submit-btn-blue").html('FIGHTING <i class="fa fa-cog fa-spin"></i> '); 
+	    $("#vs-div").html('<img id="loading-gif" src="img/loading.gif"/>');		
+	}else{
+		//remove loading gif
+		$("#vs-div").html('<h3 id="vs" >Vs</h3>');		
+		$("#submit-btn-blue").html(' SUBMIT <i class="fa fa-check">');
+	}
+}
 
     function submit() {
         if (images[0] && images[1]) {
             //loading icon
-            $("#submit-btn-blue").html('FIGHTING <i class="fa fa-cog fa-spin"></i> '); 
-	    $("#vs-div").html('<img id="loading-gif" src="img/loading.gif"/>');       	
+       	    loading(true);
             $.each(images, function(i) {
                 $.ajax({
                         url: "https://api.projectoxford.ai/emotion/v1.0/recognize",
@@ -99,7 +109,8 @@ $(function() {
                             $("#span_" + (i + 1) + "_surprise").html(params_result[3] + '% Surprised');
                             $("#surprise-" + (i + 1)).html(params_result[3]);
                             $("#img_" + (i + 1) + "_overall").html(params_result[0] + params_result[1] + params_result[2] + params_result[3]);
-                            if (results[0] && results[1]) {
+			    allsent+=1;
+                            if (results[0] && results[1] && allsent ==2) {
                                 //here the two responses have come so show result
                                 sum0 = 0;
                                 sum1 = 0;
@@ -186,13 +197,17 @@ $(function() {
                             else
                                 warning = "Sorry, No Face detected in the Red Image :(";
                             // no image detected
+			    images[i] = null;
+			    loading(false);
+			    allsent=0;
                             alert(warning);
                         }
 
                     })
                     .fail(function(data) {
                         //the Error Function
-                        //		   $('#base').text(JSON.stringify(data, null, '\t'));
+		       alert("You are Evil 3:D");
+                       loading(false);
                     });
             });
         } else {
@@ -213,6 +228,7 @@ $(function() {
             $("#submit-btn-blue").html(' SUBMIT <i class="fa fa-check">');
             $("#results").hide();
             $("#stats").hide();
+	    allsent=0;
         }else{
         	alert("You are Evil 3:D");
         }
