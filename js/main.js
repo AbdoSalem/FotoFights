@@ -83,12 +83,16 @@ $(function() {
                         if (params_result) {
                             results[i] = params_result;
                             $("#img_" + (i + 1) + "_happiness").css('width', params_result[0] + '%');
+                            $("#span_" + (i + 1) + "_happiness").html(params_result[0] + '% Happy');
                             $("#happiness-" + (i + 1)).html(params_result[0]);
                             $("#img_" + (i + 1) + "_anger").css('width', params_result[1] + '%');
+                            $("#span_" + (i + 1) + "_anger").html(params_result[1] + '% Angry');
                             $("#anger-" + (i + 1)).html(params_result[1]);
                             $("#img_" + (i + 1) + "_fear").css('width', params_result[2] + '%');
+                            $("#span_" + (i + 1) + "_fear").html(params_result[2] + '% Afraid');
                             $("#fear-" + (i + 1)).html(params_result[2]);
                             $("#img_" + (i + 1) + "_surprise").css('width', params_result[3] + '%');
+                            $("#span_" + (i + 1) + "_surprise").html(params_result[3] + '% Surprised');
                             $("#surprise-" + (i + 1)).html(params_result[3]);
                             $("#img_" + (i + 1) + "_overall").html(params_result[0] + params_result[1] + params_result[2] + params_result[3]);
                             if (results[0] && results[1]) {
@@ -102,6 +106,7 @@ $(function() {
                                 });
                                 $("#results").show();
 				$("#stats").show();
+				$(window).scrollTop($("#share-btn").offset().top/2);
                                 if (sum0 > sum1) {
                                     //red wins
                                     $("#result-txt").html("RED WINS!");
@@ -174,7 +179,14 @@ $(function() {
     }
     $("#input_file_left").change("#img_left", readImage);
     $("#input_file_right").change("#img_right", readImage);
-    $("#submit-btn-blue").click(submit);
+    $("#submit-btn-blue").click(function(){
+    	if($("#submit-btn-blue:contains('SUBMIT')").length>0){
+		submit();
+    	}else{
+    		alert("clear");
+    	}
+	
+    });
 
 
 
