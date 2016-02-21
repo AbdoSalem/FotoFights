@@ -210,6 +210,8 @@ $(function() {
             $("#submit-btn-blue").html(' SUBMIT <i class="fa fa-check">');
             $("#results").hide();
             $("#stats").hide();
+        }else{
+        	alert("You are Evil 3:D");
         }
 
     });
