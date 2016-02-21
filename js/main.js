@@ -60,7 +60,8 @@ $(function() {
     function submit() {
         if (images[0] && images[1]) {
             //loading icon
-            $("#submit-btn-blue").html('FIGHTING <i class="fa fa-cog fa-spin"></i> ');        	
+            $("#submit-btn-blue").html('FIGHTING <i class="fa fa-cog fa-spin"></i> '); 
+	    $("#vs-div").html('<img id="loading-gif" src="img/loading.gif"/>');       	
             $.each(images, function(i) {
                 $.ajax({
                         url: "https://api.projectoxford.ai/emotion/v1.0/recognize",
@@ -115,7 +116,9 @@ $(function() {
                                 $("#submit-btn-blue").removeClass("submit-btn-blue");
                                 $("#submit-btn-blue").addClass("cancel-btn");
                                 $("#submit-btn-blue").html('CLEAR <i class="fa fa-times"> ');
-
+				
+				//remove loading gif
+				$("#vs-div").html('<h3 id="vs" >Vs</h3>');
 				//show results & status
                                 $("#results").show();
                                 $("#stats").show();
