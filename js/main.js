@@ -28,6 +28,7 @@ $(function() {
             FR.readAsDataURL(this.files[0]);
         }else{
         	$("#results").hide();
+		$("#stats").hide();
         }
     }
 
@@ -100,6 +101,7 @@ $(function() {
                                     sum1 += parseFloat(this) || 0;
                                 });
                                 $("#results").show();
+				$("#stats").show();
                                 if (sum0 > sum1) {
                                     //red wins
                                     $("#result-txt").html("RED WINS!");
