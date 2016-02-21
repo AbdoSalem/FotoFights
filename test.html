@@ -70,18 +70,23 @@
 
       </div>
 
+      <div class="text-center" id="cancel-movement" >
+        <button type="submit" value="Submit" class="btn btn-lg" id="submit-btn-blue" href="#"> SUBMIT <i class="fa fa-check"> </i></button>
+      </div>
 
-      <div class="col-md-8 col-md-offset-2" id="results">
 
+
+      <div class="col-md-8 col-md-offset-2" id="results-green">
         <div class="col-md-7 col-md-offset-1">
           <p id="result-txt">GREEN WINS!</p>
         </div>
 
         <div class="col-md-4">
-          <a type="button" name="button" class="btn btn-lg" id="share-btn" href="#"
+          <a type="button" name="button" class="btn btn-lg" id="share-btn-green" href="#"
           onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),'facebook-share-dialog','width=626,height=436');return false;"?> SHARE <i class="fa fa-share"> </i></a>
         </div>
       </div>
+
       <div class="col-md-8 col-md-offset-2" id="stats">
 
         <table class='table table-borderless text-center'>
@@ -92,68 +97,76 @@
               <td class="big-txt" id="img_2_overall">703</td>
             </tr>
             <tr>
-              <td class="row">20
+              <td>
+                <div id="happiness-red">20</div>
                 <div class="progress">
-                  <div class="progress-bar" id="img_1_happiness" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:20%">
+                  <div class="progress-bar progress-bar-danger" id="img_1_happiness" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:20%">
                     <span id="span_1_happiness" class="sr-only">20% Complete</span>
                   </div>
                 </div>
               </td>
-              <td>HAPINESS</td>
-              <td>50
+              <td class="mid-col-table">HAPINESS</td>
+              <td>
+                <div id="happiness-green">50</div>
                 <div class="progress">
-                  <div class="progress-bar" id="img_2_happiness" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                  <div class="progress-bar progress-bar-success" id="img_2_happiness" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:50%">
                     <span id="span_2_happiness" class="sr-only">50% Complete</span>
                   </div>
                 </div>
               </td>
             </tr>
             <tr>
-              <td>45
+              <td>
+                <div id="anger-red">45</div>
                 <div class="progress">
-                  <div class="progress-bar" id="img_1_anger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:45%">
+                  <div class="progress-bar progress-bar-danger" id="img_1_anger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:45%">
                     <span id="span_1_anger" class="sr-only">45% Complete</span>
                   </div>
                 </div>
               </td>
-              <td>ANGER</td>
-              <td>11
+              <td class="mid-col-table">ANGER</td>
+              <td>
+                <div id="anger-green">11</div>
                 <div class="progress">
-                  <div class="progress-bar" id="img_2_anger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:11%">
+                  <div class="progress-bar progress-bar-success" id="img_2_anger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:11%">
                     <span id="span_2_anger" class="sr-only">11% Complete</span>
                   </div>
                 </div>
               </td>
             </tr>
             <tr>
-              <td>40
+              <td>
+                <div id="fear-red">40</div>
                 <div class="progress">
-                  <div class="progress-bar" id="img_1_fear" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                  <div class="progress-bar progress-bar-danger" id="img_1_fear" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:40%">
                     <span id="span_1_fear" class="sr-only">40% Complete</span>
                   </div>
                 </div>
               </td>
-              <td>FEAR</td>
-              <td>12
+              <td class="mid-col-table">FEAR</td>
+              <td>
+                <div id="fear-green">12</div>
                 <div class="progress">
-                  <div class="progress-bar" id="img_2_fear" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:12%">
+                  <div class="progress-bar progress-bar-success" id="img_2_fear" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:12%">
                     <span id="span_2_fear" class="sr-only">12% Complete</span>
                   </div>
                 </div>
               </td>
             </tr>
             <tr>
-              <td>30
+              <td>
+                <div id="surprise-red">45</div>
                 <div class="progress">
-                  <div class="progress-bar" id="img_1_surprise" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:30%">
+                  <div class="progress-bar progress-bar-danger" id="img_1_surprise" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:30%">
                     <span id="span_1_surprise" class="sr-only">45% Complete</span>
                   </div>
                 </div>
               </td>
-              <td>SURPRISE</td>
-              <td>50
+              <td class="mid-col-table">SURPRISE</td>
+              <td>
+                <div id="surprise-green">50</div>
                 <div class="progress">
-                  <div class="progress-bar"  id="img_2_surprise" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                  <div class="progress-bar progress-bar-success"  id="img_2_surprise" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:50%">
                     <span id="span_2_surprise" class="sr-only">50% Complete</span>
                   </div>
                 </div>
@@ -179,7 +192,7 @@
 
           <div class="col-md-2 col-md-offset-1">
             <div class="row">
-              <h4 class="text-center"> share  <a href="#"><i class="fa fa-twitter-square fa-lg"></i></a> <a href="#"><i class="fa fa-facebook-square fa-lg"></i></a> </h4>
+              <h4 class="text-center">  <a href="#"><i class="fa fa-twitter-square fa-lg"></i></a> <a href="#"><i class="fa fa-facebook-square fa-lg"></i></a> </h4>
 
             </div>
           </div>

@@ -78,6 +78,34 @@ body {
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 
 }
+#cancel-movement{
+  height: 100px;
+}
+#submit-btn-blue{
+font-family: 'Alegreya Sans', sans-serif;
+font-weight: 900;
+font-size: 35px;
+background-color: #2680aa;
+color: white;
+box-shadow: 4px 4px 0px rgba(15, 56, 75, 1);
+
+}
+
+#submit-btn-blue:hover{
+font-family: 'Alegreya Sans', sans-serif;
+font-weight: 900;
+font-size: 35px;
+background-color: #2680aa;
+color: white;
+margin-left: 4px;
+margin-top: 4px;
+box-shadow: 0px 0px 0px rgba(15, 56, 75, 1);
+
+}
+#submit-btn-blue i {
+  color: white;
+}
+
 #stats{
 margin-top: 40px;
 height: 450px;
@@ -88,16 +116,11 @@ color: #fff;
 font-family: 'Alegreya Sans', sans-serif;
 font-weight: 900;
 font-size: 20px;
-}
-.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
-    border: none;
-}
-.big-txt{
-  font-size:35px;
+box-shadow: 6px 6px 0px rgba(165, 138, 54, 0.5);
 }
 
 
-#results{
+#results-green{
 margin-top: 15px;
 height: 100px;
 background-color: #26aa57;
@@ -105,13 +128,23 @@ border: 15px solid #26aa57;
 border-radius: 15px;
 box-shadow: 6px 6px 0px rgba(165, 138, 54, 0.5);
 }
+
+#results-red{
+margin-top: 15px;
+height: 100px;
+background-color: #ed624a;
+border: 15px solid #ed624a;
+border-radius: 15px;
+box-shadow: 6px 6px 0px rgba(165, 138, 54, 0.5);
+}
+
 #result-txt{
   font-family: 'Alegreya Sans', sans-serif;
   font-weight: 900;
   color: #fff;
   font-size: 50px;
 }
-#share-btn{
+#share-btn-green{
 font-family: 'Alegreya Sans', sans-serif;
 font-weight: 900;
 font-size: 35px;
@@ -120,7 +153,7 @@ color: white;
 box-shadow: 4px 4px 0px rgba(22, 98, 50, 1);
 }
 
-#share-btn:hover{
+#share-btn-green:hover{
 font-family: 'Alegreya Sans', sans-serif;
 font-weight: 900;
 font-size: 35px;
@@ -131,7 +164,32 @@ margin-top: 4px;
 box-shadow: 0px 0px 0px rgba(22, 98, 50, 1);
 }
 
-#share-btn i {
+#share-btn-green i {
+  color: white;
+}
+
+
+#share-btn-red{
+font-family: 'Alegreya Sans', sans-serif;
+font-weight: 900;
+font-size: 35px;
+background-color: #9d0332;
+color: white;
+box-shadow: 4px 4px 0px rgba(115, 2, 37, 1);
+}
+
+#share-btn-red:hover{
+font-family: 'Alegreya Sans', sans-serif;
+font-weight: 900;
+font-size: 35px;
+background-color: #9d0332;
+color: white;
+margin-left: 4px;
+margin-top: 4px;
+box-shadow: 0px 0px 0px rgba(22, 98, 50, 1);
+}
+
+#share-btn-red i {
   color: white;
 }
 
@@ -168,4 +226,13 @@ footer h4{
   margin-left: -15px;
   width: 262.5px;
   height: 270px;
+}
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+    border: none;
+}
+.big-txt{
+  font-size:35px;
+}
+.mid-col-table{
+ font-size: 25px;
 }
