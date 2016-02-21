@@ -59,6 +59,8 @@ $(function() {
 
     function submit() {
         if (images[0] && images[1]) {
+            //loading icon
+            $("#submit-btn-blue").html('FIGHTING <i class="fa fa-cog fa-spin"></i> ');        	
             $.each(images, function(i) {
                 $.ajax({
                         url: "https://api.projectoxford.ai/emotion/v1.0/recognize",
