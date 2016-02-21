@@ -13,6 +13,7 @@ $(function() {
     var images = new Array();
     var results = new Array();
     var allsent = 0;
+    var button_state="submit";
     //read the image choosen and send the request to Microsoft
     function readImage(dest) {
         if (this.files && this.files[0]) {
@@ -25,8 +26,11 @@ $(function() {
             var FR = new FileReader();
             FR.onload = function(e) {
                 $(dest.data).attr("src", e.target.result);
+	    if(images[0] && images[1] && button_state !="clear")
+		 button_state ="submit";
             };
             FR.readAsDataURL(this.files[0]);
+
         } else {
             $("#results").hide();
             $("#stats").hide();
@@ -37,7 +41,7 @@ $(function() {
     function parseJSON(imgData) {
 
         var dataLength = imgData.length;
-        if (dataLength && imgData[i] && imgData[i]["scores"]) {
+        if (dataLength && imgData[0] && imgData[0]["scores"]) {
             var happiness = 0;
             var anger = 0;
             var fear = 0;
@@ -54,12 +58,17 @@ $(function() {
             params_arr = [parseInt((happiness / dataLength) * 100), parseInt((anger / dataLength) * 100), parseInt((fear / dataLength) * 100), parseInt((surprise / dataLength) * 100)];
 
             return params_arr;
-        } else return dataLength;
+        } else error();
 
     }
 
     function loading(e) {
         if (e) {
+ 	    if ($("#submit-btn-blue").hasClass("cancel-btn"))
+            	$("#submit-btn-blue").removeClass("cancel-btn");
+            if ($("#submit-btn-blue").hasClass("submit-btn-black"))
+            	$("#submit-btn-blue").removeClass("submit-btn-black");
+            $("#submit-btn-blue").addClass("submit-btn-blue");
             $("#submit-btn-blue").html('FIGHTING <i class="fa fa-cog fa-spin"></i> ');
             $("#vs-div").html('<img id="loading-gif" src="img/loading.gif"/>');
         } else {
@@ -70,7 +79,14 @@ $(function() {
     }
 
     function error(e) {
-        alert(e);
+
+            if ($("#submit-btn-blue").hasClass("cancel-btn"))
+            	$("#submit-btn-blue").removeClass("cancel-btn");
+            if ($("#submit-btn-blue").hasClass("submit-btn-blue"))
+            	$("#submit-btn-blue").removeClass("submit-btn-blue");
+            $("#submit-btn-blue").addClass("submit-btn-black");
+         $("#submit-btn-blue").html(' Make sure to upload 2 photos with faces !!');
+	button_state="submit";
     }
 
     function submit() {
@@ -129,10 +145,15 @@ $(function() {
                                 });
 
                                 //change submit button to clear
+			        if ($("#submit-btn-blue").hasClass("submit-btn-black"))
+				   	$("#submit-btn-blue").removeClass("submit-btn-black");
+				if ($("#submit-btn-blue").hasClass("submit-btn-blue"))
+				    	$("#submit-btn-blue").removeClass("submit-btn-blue");
+
                                 $("#submit-btn-blue").removeClass("submit-btn-blue");
                                 $("#submit-btn-blue").addClass("cancel-btn");
-                                $("#submit-btn-blue").html('CLEAR <i class="fa fa-times"> ');
-
+                                $("#submit-btn-blue").html('CLEAR PHOTO <i class="fa fa-times"> ');
+				button_state="clear";
                                 //remove loading gif
                                 $("#vs-div").html('<h3 id="vs" >Vs</h3>');
                                 //show results & status
@@ -179,7 +200,7 @@ $(function() {
                                     $("#share-btn").addClass("share-btn-green");
                                 } else {
                                     //draw
-                                    $("#result-txt").html("DRAW!");
+                                    $("#result-txt").html("OH! CUTE");
                                     if ($("#results").hasClass("results-green"))
                                         $("#results").removeClass("results-green");
                                     if ($("#results").hasClass("results-red"))
@@ -193,7 +214,11 @@ $(function() {
                                         $("#share-btn").removeClass("share-btn-green");
 
                                     $("#share-btn").addClass("share-btn-draw");
+				    error="";
                                 }
+			            images = new Array();
+				    results=new Array();
+
                             }
                         } else {
                             warning = "";
@@ -203,6 +228,7 @@ $(function() {
                                 warning = "Sorry, No Face detected in the Red Image :(";
                             // no image detected
                             images[i] = null;
+			    results[i] =null;
                             loading(false);
                             allsent = 0;
                             error(warning);
@@ -222,23 +248,27 @@ $(function() {
     $("#input_file_left").change("#img_left", readImage);
     $("#input_file_right").change("#img_right", readImage);
     $("#submit-btn-blue").click(function() {
-        if ($("#submit-btn-blue:contains('SUBMIT')").length > 0) {
+        if (button_state =="submit") {
             submit();
-        } else if ($("#submit-btn-blue:contains('CLEAR')").length > 0) {
-            $("#submit-btn-blue").removeClass("cancel-btn");
+        } else if (button_state="clear") {
+            if ($("#submit-btn-blue").hasClass("cancel-btn"))
+            	$("#submit-btn-blue").removeClass("cancel-btn");
+            if ($("#submit-btn-blue").hasClass("submit-btn-black"))
+            	$("#submit-btn-blue").removeClass("submit-btn-black");
             $("#submit-btn-blue").addClass("submit-btn-blue");
-            images = new Array();
             $("#img_left").attr("src", "img/btn.png");
             $("#img_right").attr("src", "img/btn.png");
             $("#submit-btn-blue").html(' SUBMIT <i class="fa fa-check">');
             $("#results").hide();
             $("#stats").hide();
             allsent = 0;
+	    button_state ="submit";
         } else {
             error("You are Evil 3:D");
         }
 
     });
+
 
 
 
