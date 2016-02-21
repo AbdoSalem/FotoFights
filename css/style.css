@@ -87,7 +87,7 @@ font-weight: 900;
 font-size: 35px;
 background-color: #2680aa;
 color: white;
-box-shadow: 4px 4px 0px rgba(15, 56, 75, 1);
+box-shadow: 4px 4px 0px rgba(15, 56, 75, .7);
 
 }
 
