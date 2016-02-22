@@ -335,27 +335,89 @@ footer h4{
 @media (max-width: 1200px) {
   .initial-img {
     margin-left: -15px;
-    width: 200px;
-    height: 200px;
+    width: 213px;
+    height: 270px;
   }
+}
+
+@media (max-width: 990px) {
+  #vs{
+    margin-left: 300px;
+  }
+  #stats{
+    margin-top: 150px;
+  }
+  .initial-img {
+    margin-left: -15px;
+    width: 595px;
+    height: 270px;
+  }
+}
 
 @media (max-width: 780px) {
   .initial-img {
     margin-left: -15px;
-    width: 250px;
-    height: 250px;
+    width: 595px;
+    height: 270px;
+  }
+  #stats{
+    margin-top: 50px;
+  }
+  #vs{
+    margin-left: 200px;
+
+  }
+}
+
+@media (max-width: 667px){
+  .initial-img {
+    margin-left: -15px;
+    width: 400px;
+    height: 270px;
   }
 
+}
+
+@media (max-width: 603px){
+  .initial-img {
+    margin-left: -15px;
+    width: 475px;
+    height: 270px;
+  }
 }
 @media (max-width: 568px) {
   #result-txt{
     font-size: 30px;
   }
+  #vs{
+    font-size: 55px;
+    margin-left: 180px;
+  }
+  .initial-img {
+    margin-left: -15px;
+    width: 400px;
+    height: 270px;
+  }
 }
+
 
 
 @media (max-width: 480px) {
   #vs{
     font-size: 55px;
+    margin-left: 150px;
   }
+  .initial-img {
+    margin-left: -15px;
+    width: 370px;
+    height: 270px;
+  }
+}
+@media (max-width: 320px) {
+  .initial-img {
+    margin-left: -15px;
+    width: 236px;
+    height: 270px;
+  }
+
 }
