@@ -1,0 +1,244 @@
+<!DOCTYPE HTML>
+<!--
+/*
+ * jQuery File Upload Plugin Demo
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2010, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+-->
+<html lang="en">
+  <head>
+    <!-- Force latest IE rendering engine or ChromeFrame if installed -->
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <![endif]-->
+    <meta charset="utf-8">
+    <title>foto fight</title>
+    <meta name="description" content="File Upload widget with multiple file selection, drag&amp;drop support, progress bars, validation and preview images, audio and video for jQuery. Supports cross-domain, chunked and resumable file uploads and client-side image resizing. Works with any server-side platform (PHP, Python, Ruby on Rails, Java, Node.js, Go etc.) that supports standard HTML form file uploads.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- favicon -->
+    <link rel="icon" href="img/fav_icon.png">
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <!-- fontawsome styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- blueimp Gallery styles -->
+    <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+    <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+    <link rel="stylesheet" href="css/jquery.fileupload.css">
+    <link rel="stylesheet" href="css/jquery.fileupload-ui.css">
+    <!-- CSS adjustments for browsers with JavaScript disabled -->
+    <noscript><link rel="stylesheet" href="css/jquery.fileupload-noscript.css"></noscript>
+    <noscript><link rel="stylesheet" href="css/jquery.fileupload-ui-noscript.css"></noscript>
+    <!-- Generic page styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+  <body>
+
+    <div class="container page-wrap">
+      <div class="row">
+        <img class="col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4" src="img/foto.png" alt="fotofight">
+      </div>
+
+      <div class="" id="subhead">
+        <h3 class="text-center">Upload 2 photos and watch them fight</h3>
+      </div>
+
+
+      <div class="row" id="imgs">
+        <a href="#">
+          <div id="left-box" class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-3 col-md-offset-2">
+            <input type="file" id="input_file_left" class="input_file" name="files[]" accept="image/*">
+            <img id="img_left" class="initial-img" src="img/btn.png">
+          </div>
+        </a>
+
+        <div id="vs-div" class="col-md-1">
+          <h3 id="vs" >Vs</h3>
+        </div>
+
+        <a href="#">
+          <div id="right-box" class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-3 col-md-offset-1">
+            <input type="file" id="input_file_right" class="input_file " name="files[]" accept="image/*">
+        		<img id="img_right" class="initial-img" src="img/btn.png"></div>
+        </a>
+
+      </div>
+
+
+      <div id="no-movement">
+        <button type="submit" value="Submit" class="btn btn-lg col-xs-12 col-sm-12 col-md-8 col-md-offset-2 submit-btn-blue" id="submit-btn-blue" href="#"> SUBMIT <i class="fa fa-check"> </i></button>
+      </div>
+
+      <div class="col-sm-12 col-md-8 col-md-offset-2 results-green" id="results" style="display:none" >
+        <div class="col-xs-6 col-md-7 col-md-offset-1">
+          <p id="result-txt">GREEN WINS!</p>
+        </div>
+
+        <div class="col-xs-4 col-md-4">
+          <a type="button" name="button" class="btn btn-lg share-btn-green" id="share-btn" href="#"
+          onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),'facebook-share-dialog','width=626,height=436');return false;"?> SHARE <i class="fa fa-share"> </i></a>
+        </div>
+      </div>
+
+      <div class="col-md-8 col-md-offset-2" id="stats" style="display:none;">
+
+        <table class='table table-borderless text-center'>
+          <tbody class="">
+            <tr>
+              <td class="big-txt" id="img_1_overall">531</td>
+              <td class="big-txt">OVERALL</td>
+              <td class="big-txt" id="img_2_overall">703</td>
+            </tr>
+            <tr>
+              <td>
+                <div id="happiness-1">20</div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-danger" id="img_1_happiness" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:20%">
+                    <span id="span_1_happiness" class="sr-only">20% Complete</span>
+                  </div>
+                </div>
+              </td>
+              <td class="mid-col-table">HAPINESS</td>
+              <td>
+                <div id="happiness-2">50</div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success" id="img_2_happiness" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                    <span id="span_2_happiness" class="sr-only">50% Complete</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div id="anger-1">45</div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-danger" id="img_1_anger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:45%">
+                    <span id="span_1_anger" class="sr-only">45% Complete</span>
+                  </div>
+                </div>
+              </td>
+              <td class="mid-col-table">ANGER</td>
+              <td>
+                <div id="anger-2">11</div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success" id="img_2_anger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:11%">
+                    <span id="span_2_anger" class="sr-only">11% Complete</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div id="fear-1">40</div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-danger" id="img_1_fear" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                    <span id="span_1_fear" class="sr-only">40% Complete</span>
+                  </div>
+                </div>
+              </td>
+              <td class="mid-col-table">FEAR</td>
+              <td>
+                <div id="fear-2">12</div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success" id="img_2_fear" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:12%">
+                    <span id="span_2_fear" class="sr-only">12% Complete</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div id="surprise-1">45</div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-danger" id="img_1_surprise" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:30%">
+                    <span id="span_1_surprise" class="sr-only">45% Complete</span>
+                  </div>
+                </div>
+              </td>
+              <td class="mid-col-table">SURPRISE</td>
+              <td>
+                <div id="surprise-2">50</div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success"  id="img_2_surprise" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                    <span id="span_2_surprise" class="sr-only">50% Complete</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <div class="col-md-12" id="comparison-txt">
+        <h3 class="text-center">Comparison between the photos based on facial expressions</h3>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-xs-3 col-xs-offset-1 col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1">
+            <h4>copyright © 2016</h4>
+          </div>
+
+          <div class="col-xs-2 col-xs-offset-1 col-sm-2 col-sm-offset-1 col-md-2 col-md-offset-1">
+            <div class="row">
+              <h4 class="text-center">  <a href="#"><i class="fa fa-twitter-square fa-lg"></i></a> <a href="#"><i class="fa fa-facebook-square fa-lg"></i></a> </h4>
+
+            </div>
+          </div>
+
+          <div class="col-xs-3 col-xs-offset-2 col-sm-3 col-sm-offset-2 col-md-3 col-md-offset-2">
+            <h4>contact@fotofights.com</h4>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+    <script src="js/vendor/jquery.ui.widget.js"></script>
+    <!-- The Templates plugin is included to render the upload/download listings -->
+    <script src="//blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>
+    <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+    <script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+    <!-- The Canvas to Blob plugin is included for image resizing functionality -->
+    <script src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+    <!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
+      <!-- blueimp Gallery script -->
+    <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+    <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+    <script src="js/jquery.iframe-transport.js"></script>
+    <!-- The basic File Upload plugin -->
+    <script src="js/jquery.fileupload.js"></script>
+    <!-- The File Upload processing plugin -->
+    <script src="js/jquery.fileupload-process.js"></script>
+    <!-- The File Upload image preview & resize plugin -->
+    <script src="js/jquery.fileupload-image.js"></script>
+    <!-- The File Upload audio preview plugin -->
+    <script src="js/jquery.fileupload-audio.js"></script>
+    <!-- The File Upload video preview plugin -->
+    <script src="js/jquery.fileupload-video.js"></script>
+    <!-- The File Upload validation plugin -->
+    <script src="js/jquery.fileupload-validate.js"></script>
+    <!-- The File Upload user interface plugin -->
+    <script src="js/jquery.fileupload-ui.js"></script>
+    <!-- The main application script -->
+    <script src="js/main.js"></script>
+    <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
+    <!--[if (gte IE 8)&(lt IE 10)]>
+    <script src="js/cors/jquery.xdr-transport.js"></script>
+<![endif]-->
+  </body>
+</html>
