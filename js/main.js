@@ -229,7 +229,6 @@ $(function() {
                             // no image detected
                             images[i] = null;
 			    results[i] =null;
-                            loading(false);
                             allsent = 0;
                             error(warning);
                         }
@@ -237,8 +236,9 @@ $(function() {
                     })
                     .fail(function(data) {
                         //the Error Function
+			loading(false);
                         error("You are Evil 3:D");
-                        loading(false);
+
                     });
             });
         } else {
