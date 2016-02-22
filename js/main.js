@@ -79,7 +79,7 @@ $(function() {
     }
 
     function error(e) {
-
+	console.log(e);
             if ($("#submit-btn-blue").hasClass("cancel-btn"))
             	$("#submit-btn-blue").removeClass("cancel-btn");
             if ($("#submit-btn-blue").hasClass("submit-btn-blue"))
@@ -214,7 +214,7 @@ $(function() {
                                         $("#share-btn").removeClass("share-btn-green");
 
                                     $("#share-btn").addClass("share-btn-draw");
-				    error="";
+				   
                                 }
 			            images = new Array();
 				    results=new Array();
