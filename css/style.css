@@ -68,6 +68,9 @@ body {
   box-shadow: 6px 6px 0px rgba(165, 138, 54, 0.5);
   background-size: 270px;
 }
+#vs-div{
+ text-align: center;
+}
 #vs{
   font-family: 'Alegreya Sans', sans-serif;
   font-weight: 900;
@@ -332,8 +335,15 @@ footer h4{
     margin-top: 100px;
 }
 
-
 @media (max-width: 1200px) {
+  #vs{
+    margin-top: 100px;
+    margin-left: 35px;
+  }
+  #loading-gif{
+      width: 150px;
+      margin-top: 100px;
+  }
   .initial-img {
     margin-left: -15px;
     width: 213px;
@@ -354,8 +364,18 @@ footer h4{
 }
 
 @media (max-width: 990px) {
+  #vs-div{
+    clear: both;
+    text-align: center;
+  }
   #vs{
-    margin-left: 300px;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+  #loading-gif{
+      width: 70px;
+      margin-top: 0px;
+      margin-left: 0px;
   }
   #stats{
     margin-top: 150px;
@@ -388,10 +408,7 @@ footer h4{
   #stats{
     margin-top: 50px;
   }
-  #vs{
-    margin-left: 200px;
 
-  }
   .input_file{
       position: absolute;
       top: 0;
@@ -452,9 +469,12 @@ footer h4{
   #result-txt{
     font-size: 30px;
   }
+  #loading-gif{
+      width: 60px;
+
+  }
   #vs{
     font-size: 55px;
-    margin-left: 180px;
   }
   .initial-img {
     margin-left: -15px;
@@ -478,9 +498,23 @@ footer h4{
 
 
 @media (max-width: 480px) {
-  #vs{
-    font-size: 55px;
-    margin-left: 150px;
+  .share-btn-green{
+    font-size: 20px;
+  }
+  .share-btn-green:hover{
+    font-size: 20px;
+  }
+  .share-btn-red{
+    font-size: 20px;
+  }
+  .share-btn-red:hover{
+    font-size: 20px;
+  }
+  .share-btn-draw{
+    font-size: 20px;
+  }
+  .share-btn-draw:hover{
+    font-size: 20px;
   }
   .initial-img {
     margin-left: -15px;
@@ -498,6 +532,12 @@ footer h4{
       height: 270px;
       direction: ltr;
       cursor: pointer;
+  }
+  .big-txt{
+    font-size:20px;
+  }
+  .mid-col-table{
+   font-size: 15px;
   }
 }
 @media (max-width: 320px) {
